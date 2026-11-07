@@ -1,0 +1,10 @@
+# Local extracted copy of this project (not part of the repository)
+/ascii-rose/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS metadata
+.DS_Store
+Thumbs.db

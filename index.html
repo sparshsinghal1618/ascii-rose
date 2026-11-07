@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="A procedural ASCII rose grown character by character. Built with a custom canvas engine, live source console and real-time controls.">
+  <title>ASCII Rose Generator — Built Character by Character</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <noscript>
+    <div class="noscript">This simulator needs JavaScript enabled. The rose is generated live — no image, no emoji.</div>
+  </noscript>
+
+  <div class="app" id="app">
+    <header class="masthead">
+      <div class="telemetry" aria-live="polite">
+        <div class="telemetry-state">
+          <span class="status-lamp" id="statusLamp"></span>
+          <span id="statusLabel">STANDBY</span>
+        </div>
+        <div class="telemetry-seed">SEED <span id="seedLabel">00000000</span></div>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="stage-shell" id="stageShell" aria-label="Animated procedural ASCII rose">
+        <canvas id="starCanvas" class="stage-canvas" aria-hidden="true"></canvas>
+        <canvas id="roseCanvas" class="stage-canvas rose-canvas" aria-label="Procedurally generated ASCII rose"></canvas>
+        <div class="stage-grid" aria-hidden="true"></div>
+        <div class="stage-scanlines" aria-hidden="true"></div>
+        <div class="stage-vignette" aria-hidden="true"></div>
+
+        <div class="stage-hud hud-tl">
+          <span class="hud-kicker">SPECIMEN</span>
+          <span>ROSA_ALGORITHMICA</span>
+        </div>
+        <div class="stage-hud hud-tr">
+          <span id="fpsLabel">-- FPS</span>
+          <span class="hud-divider">/</span>
+          <span id="glyphLabel">0 GLYPHS</span>
+        </div>
+        <div class="stage-hud hud-bl">
+          <span class="hud-kicker">GENOME</span>
+          <span id="hudSeed">0x00000000</span>
+        </div>
+        <div class="stage-hud hud-br" id="phaseLabel">AWAITING SIGNAL</div>
+
+        <div class="stage-corner tl" aria-hidden="true"></div>
+        <div class="stage-corner tr" aria-hidden="true"></div>
+        <div class="stage-corner bl" aria-hidden="true"></div>
+        <div class="stage-corner br" aria-hidden="true"></div>
+
+        <button class="exit-fullscreen" id="exitFullscreenBtn" type="button">EXIT FULLSCREEN <span>ESC</span></button>
+      </section>
+
+      <section class="source-console" aria-label="Live source code panel">
+        <div class="console-bar">
+          <div class="console-lights" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="console-heading">
+            <span class="live-lamp"></span>
+            <strong>SOURCELAB</strong>
+            <span class="console-sub">// REAL JAVASCRIPT, EXECUTING NOW</span>
+          </div>
+          <div class="console-mode"><span id="codeModeLabel">FETCHING SOURCE</span></div>
+        </div>
+
+        <div class="code-tabs" id="codeTabs" role="tablist" aria-label="Source files"></div>
+
+        <div class="code-body" id="codeBody">
+          <div class="code-scroll" id="codeScroll">
+            <div class="code-lines" id="codeLines"><span class="code-placeholder">// loading source…</span></div>
+          </div>
+        </div>
+
+        <div class="console-foot">
+          <span id="codeFileLabel">rose-engine.js</span>
+          <span id="codeStats">0 LINES</span>
+          <span class="console-foot-right">AUTO-SCROLL <i id="autoScrollLamp"></i></span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-foot">
+      <span class="site-foot-center">CANVAS RENDERER · PROCEDURAL GEOMETRY · 60 FPS TARGET</span>
+      <span id="footSeed">GENOME 0x00000000</span>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="source-snapshot.js"></script>
+  <script src="petal-generator.js"></script>
+  <script src="particle-system.js"></script>
+  <script src="rose-engine.js"></script>
+  <script src="code-display.js"></script>
+  <script src="controls.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
